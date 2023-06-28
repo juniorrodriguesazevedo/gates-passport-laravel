@@ -40,7 +40,7 @@ class AuthServiceProvider extends ServiceProvider
         
         foreach ($permissionArray as $name => $roles) {
             Gate::define($name, function (User $user) use ($roles) {
-                return $user->role->pluck('id')->intersect($roles)->isNotEmpty();
+                return $user->roles->pluck('id')->intersect($roles)->isNotEmpty();
             });
         }
     }
